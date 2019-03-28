@@ -6,14 +6,14 @@ func main() {
 
 	x := [5]int{2, 5, 7, 9, 15}
 
-	for i, v := range x{
+	for i, v := range x {
 		fmt.Printf("indice %d com valor %d\n", i, v)
 	}
 	fmt.Printf("\n%T\n", x)
 
 	y := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
 
-	for i, v := range y{
+	for i, v := range y {
 		fmt.Printf("indice %d com valor %d\n", i, v)
 	}
 	fmt.Printf("\n%T\n", y)
@@ -50,21 +50,39 @@ func main() {
 	wj := [][]string{w, j}
 	fmt.Println(wj)
 
-	for i, vwj := range wj{
+	for i, vwj := range wj {
 		fmt.Println("Record ", i)
-		for k, val := range vwj{
+		for k, val := range vwj {
 			fmt.Println("Chave ", k, " Valor: ", val)
 		}
 	}
-	
+
+	fmt.Println("###########")
+
 	map1 := map[string][]string{
-		"bond_james": {"Shaken", "not stirred", "Martinis", "Women"},
-		"moneypenny_miss": {"`James Bond", "Literature", "Computer Science"},
-		"no_dr": {"Being evil", "Ice cream", "Sunsets"},
+		"bond_james":      {"Shaken", "not stirred", "Martinis", "Women"},
+		"moneypenny_miss": {"James Bond", "Literature", "Computer Science"},
+		"no_dr":           {"Being evil", "Ice cream", "Sunsets"},
 	}
 
-	
-	
-	
+	map1["Diego"] = []string{"Bom", "Bonito", "Barato"}
+
+	for key, val := range map1 {
+		fmt.Printf("Chave %s e valor\n %v\n", key, val)
+		for ind, val2 := range val {
+			fmt.Printf("Indice %d e valor %s\n", ind, val2)
+		}
+		fmt.Println("")
+	}
+
+	delete(map1, "no_dr")
+
+	for key, val := range map1 {
+		fmt.Printf("Chave %s e valor\n %v\n", key, val)
+		for ind, val2 := range val {
+			fmt.Printf("Indice %d e valor %s\n", ind, val2)
+		}
+		fmt.Println("")
+	}
 
 }
