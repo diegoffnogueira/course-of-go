@@ -44,4 +44,18 @@ func main() {
 	fmt.Println(p1.last, p1.first, " -> ", p1.age)
 	fmt.Println(sa.last, sa.person.first, sa.first, sa.licenseToKill, " -> ", p1.age)
 
+	//anonimous struct
+	an := struct {
+		first string
+		last  string
+		age   int
+	}{
+		first: "Fernanda",
+		last:  "Telles",
+		age:   36,
+	}
+
+	fmt.Println(an)
+	fmt.Println(an.age, " => ", an.first, an.last)
+
 }
