@@ -16,6 +16,7 @@ func main() {
 
 	//executa tudo de uma função e deixa esse por último
 	defer boo()
+
 	woo("Diego")
 	z := bar("Vamos brincar")
 	fmt.Println(z)
@@ -64,6 +65,7 @@ func main() {
 	sa2.speak()
 	p1.speak()
 	fmt.Println("")
+	
 	fmt.Println("*****Interface and polimorfism******")
 	poli(sa)
 	poli(sa2)
