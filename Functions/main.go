@@ -28,7 +28,7 @@ func main() {
 	//somar("Diego", 2, 3, 5)
 	soma := somar(2, 4, 5, 8, 9, 10, 12)
 	fmt.Println(soma)
-	xi := []int{1, 3, 6, 4, 8, 9}
+	xi := []int{1, 3, 6, 4, 8, 9, 12, 15}
 	somar(xi...)
 	somar()
 
@@ -69,9 +69,9 @@ func main() {
 	poli(sa2)
 	poli(p1)
 
+	//Anonymous func
 	fmt.Println("")
 	fmt.Println("*****Anonymous func******")
-	//Anonymous func
 	func() {
 		fmt.Println("Estou imprimindo uma funcão sem nome")
 	}()
@@ -92,6 +92,78 @@ func main() {
 	}
 	g(1900)
 
+	fmt.Println("")
+	fmt.Println("*****return a function******")
+	ret := function()
+	fmt.Printf("%T\n", ret())
+	//1
+	retFunc := ret()
+	fmt.Println(retFunc)
+
+	//2
+	fmt.Println(ret())
+
+	//3
+	fmt.Println(function()())
+
+	fmt.Println("")
+	fmt.Println("*****callback******")
+	totalEven := even(somar, xi...)
+	fmt.Println("total even => ", totalEven)
+	fmt.Println("total odd => ", odd(somar, xi...))
+
+
+	fmt.Println("")
+	fmt.Println("*****closure******")
+	aa := incrementor()
+	bb := incrementor()
+	fmt.Println(aa())
+	fmt.Println(aa())
+	fmt.Println(aa())
+	fmt.Println(aa())
+	fmt.Println(bb())
+	fmt.Println(bb())
+	fmt.Println(bb())
+
+}
+
+//closure
+func incrementor() func() int  {
+	var xx int
+	return func() int {
+		xx++
+		return xx
+	}
+}
+//######
+
+//callback
+func even(f func(numbers ...int) int, allInt ...int) int {
+	var yi []int
+	for _, value := range allInt {
+		if value%2 == 0 {
+			yi = append(yi, value)
+		}
+	}
+	return f(yi...)
+}
+
+func odd(f func(numbers ...int) int, allInt ...int) int {
+	var yi []int
+	for _, value := range allInt {
+		if value%2 != 0 {
+			yi = append(yi, value)
+		}
+	}
+	return f(yi...)
+}
+//#################
+
+//return a function
+func function() func() int {
+	return func() int {
+		return 451
+	}
 }
 
 //Metodos
