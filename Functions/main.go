@@ -127,7 +127,29 @@ func main() {
 	fmt.Println(bb())
 	fmt.Println(bb())
 
+	fmt.Println("")
+	fmt.Println("*****Recursion******")
+	fmt.Println(factorial(5))
+	fmt.Println(factorialLoop(4))
+
 }
+
+//Recursion
+func factorial(fac int) int {
+	if fac == 0 {
+		return 1
+	}
+	return fac * factorial(fac - 1)
+}
+
+func factorialLoop(facLoop int) int {
+	facTotal := 1
+	for ; facLoop > 0 ; facLoop-- {
+		facTotal *= facLoop
+	}
+	return facTotal
+}
+//########
 
 //closure
 func incrementor() func() int  {
