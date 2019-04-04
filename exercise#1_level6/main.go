@@ -71,6 +71,42 @@ func main() {
 	fmt.Println(re())
 	fmt.Println(ret()())
 
+	fmt.Println("Antigo =>", xii)
+	mult := multiple(multiplicador, xii...)
+	fmt.Println("Novo =>  ", mult)
+
+	pares := foo3()
+	novosPares := foo3()
+	fmt.Println(pares())
+	fmt.Println(pares())
+	fmt.Println(pares())
+	fmt.Println(pares())
+	fmt.Println(novosPares())
+	fmt.Println(novosPares())
+	fmt.Println(novosPares())
+	fmt.Println(novosPares())
+	fmt.Println(foo3()())
+
+}
+
+func foo3() func() int {
+	x := 0
+	return func() int {
+		x += 2
+		return x
+	}
+}
+
+func multiple(f func(x ...int) []int, x ...int) []int {
+	return f(x...)
+}
+
+func multiplicador(x ...int) []int {
+	var xi []int
+	for _, value := range x {
+		xi = append(xi, value*2)
+	}
+	return xi
 }
 
 func ret() func() int {
