@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"golang.org/x/crypto/bcrypt"
 	"sort"
 )
 
@@ -102,6 +103,26 @@ func main() {
 	fmt.Println(people)
 	sort.Sort(ByName(people))
 	fmt.Println(people)
+
+	fmt.Println("")
+	fmt.Println("########bcrypt########")
+	s := "password123"
+	bs, err = bcrypt.GenerateFromPassword([]byte(s), bcrypt.MinCost)
+	if err != nil {
+		fmt.Println("Error =>", err)
+	}
+	fmt.Println(s)
+	fmt.Println(bs)
+	fmt.Println(string(bs))
+	fmt.Println("--------------")
+	loginPassword := "password123"
+	err = bcrypt.CompareHashAndPassword(bs, []byte(loginPassword))
+	if err != nil {
+		fmt.Println("Você não pode logar!!")
+	} else {
+		fmt.Println("Parabéns... Você está logado!!")
+	}
+
 }
 
 func (a ByAge) Len() int {
