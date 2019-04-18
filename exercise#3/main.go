@@ -2,9 +2,9 @@ package main
 
 import "fmt"
 
-var x int = 42
-var y string = "James Bond"
-var z bool = true
+var x = 42
+var y = "James Bond"
+var z = true
 
 func main() {
 
